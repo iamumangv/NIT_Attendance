@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIT Raipur - Chemical Eng (Sec-C) Attendance & Bunk Manager</title>
+  <!-- PWA & Mobile Meta Tags -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#090d16">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="NIT Attendance">
+  <link rel="apple-touch-icon" href="icon-192.png">
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-background">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+  </div>
+
+  <div class="app-container">
+    <!-- TOP NAVIGATION & INSTITUTE HEADER -->
+    <header class="app-header glass-card">
+      <div class="header-main">
+        <div class="logo-area">
+          <div class="institute-badge">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div class="institute-details">
+            <div class="inst-name-row">
+              <span class="inst-tag">NIT RAIPUR</span>
+              <span class="semester-pill">Autumn 2026 • 1st Sem</span>
+            </div>
+            <h1 class="branch-title">Chemical Eng. <span class="sec-badge">Sec-C</span> <span class="room-badge">Room FN-4</span></h1>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <div class="batch-selector-box">
+            <span class="batch-label"><i class="fa-solid fa-users-rectangle"></i> Lab Batch:</span>
+            <div class="segmented-control">
+              <button class="batch-btn active" data-batch="C1" id="batchC1Btn">Batch C1</button>
+              <button class="batch-btn" data-batch="C2" id="batchC2Btn">Batch C2</button>
+            </div>
+          </div>
+
+          <div class="utility-buttons">
+            <button class="btn-icon install-pwa-btn" id="installAppBtn" title="Install App on Phone / PC" style="display: none;">
+              <i class="fa-solid fa-download"></i>
+              <span class="btn-text">Install App</span>
+            </button>
+            <button class="btn-icon" id="openTimetableBtn" title="View Full Timetable Grid">
+              <i class="fa-solid fa-table-cells"></i>
+              <span class="btn-text">Timetable</span>
+            </button>
+            <button class="btn-icon" id="openFacultyBtn" title="Faculty Contacts Directory">
+              <i class="fa-solid fa-id-card-clip"></i>
+              <span class="btn-text">Faculty</span>
+            </button>
+            <button class="btn-icon" id="openSettingsBtn" title="Backup & Target Settings">
+              <i class="fa-solid fa-sliders"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUNK-O-METER / OVERALL STATS RIBBON -->
+      <div class="bunkometer-ribbon" id="bunkometerRibbon">
+        <div class="stat-pill overall-stat">
+          <div class="stat-progress-ring" id="overallRing">
+            <svg viewBox="0 0 36 36" class="circular-chart">
+              <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="circle" id="overallRingProgress" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <text x="18" y="20.5" class="percentage" id="overallPercentageText">0%</text>
+            </svg>
+          </div>
+          <div class="stat-meta">
+            <span class="stat-label">Overall Attendance</span>
+            <span class="stat-numbers"><strong id="totalAttended">0</strong> / <span id="totalClasses">0</span> classes</span>
+          </div>
+        </div>
+
+        <div class="stat-pill target-advisor" id="targetAdvisorBox">
+          <div class="advisor-icon">
+            <i class="fa-solid fa-shield-halved" id="advisorIcon"></i>
+          </div>
+          <div class="advisor-content">
+            <div class="advisor-title" id="advisorHeadline">Target: 75% Attendance</div>
+            <div class="advisor-desc" id="advisorMessage">Mark classes on the calendar to see your safe bunk calculations!</div>
+          </div>
+        </div>
+
+        <div class="stat-pill quick-stats-group">
+          <div class="mini-counter present-counter">
+            <span class="mini-num" id="statPresentCount">0</span>
+            <span class="mini-lbl"><i class="fa-solid fa-check"></i> Present</span>
+          </div>
+          <div class="mini-counter absent-counter">
+            <span class="mini-num" id="statAbsentCount">0</span>
+            <span class="mini-lbl"><i class="fa-solid fa-xmark"></i> Bunked</span>
+          </div>
+          <div class="mini-counter cancelled-counter">
+            <span class="mini-num" id="statCancelledCount">0</span>
+            <span class="mini-lbl"><i class="fa-solid fa-ban"></i> Off/Holiday</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN DASHBOARD: 1. SCHEDULE CARD, 2. SUBJECT ATTENDANCE, 3. CALENDAR -->
+    <main class="dashboard-stack">
+
+      <!-- 1. SCHEDULE CARD: SELECTED DAY TIMETABLE & PERIOD INTERACTION -->
+      <section class="schedule-section">
+        <div class="glass-card schedule-card">
+          <!-- Day Header & Batch Info -->
+          <div class="schedule-header">
+            <div class="day-title-box">
+              <div class="date-badge" id="selectedDateBadge">
+                <span class="date-month" id="selectedDateMonth">AUG</span>
+                <span class="date-num" id="selectedDateNum">24</span>
+              </div>
+              <div class="day-heading-text">
+                <div class="day-row">
+                  <h2 id="selectedDayName">Monday</h2>
+                  <span class="day-status-pill" id="selectedDayStatusPill">Regular Schedule</span>
+                </div>
+                <p class="full-date-str" id="selectedFullDateStr">Monday, 24 August 2026</p>
+              </div>
+            </div>
+
+            <!-- Day Quick Actions -->
+            <div class="day-quick-actions">
+              <button class="action-pill-btn btn-mark-all-p" id="markAllPresentBtn" title="Mark all periods present">
+                <i class="fa-solid fa-check-double"></i> All Present
+              </button>
+              <button class="action-pill-btn btn-mark-all-a" id="markAllAbsentBtn" title="Mark all periods absent/spik">
+                <i class="fa-solid fa-user-xmark"></i> All Absent
+              </button>
+              <button class="action-pill-btn btn-mark-holiday" id="toggleHolidayBtn" title="Mark day as holiday/no class">
+                <i class="fa-solid fa-mug-hot"></i> Holiday
+              </button>
+              <button class="action-pill-btn btn-add-extra" id="addExtraClassBtn" title="Add extra period to this day">
+                <i class="fa-solid fa-plus"></i> Extra Class
+              </button>
+            </div>
+          </div>
+
+          <!-- Tap Cycle Helper Banner -->
+          <div class="tap-guide-banner">
+            <div class="guide-item"><span class="tap-badge tap-p"><i class="fa-solid fa-check"></i> Present</span></div>
+            <div class="guide-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="guide-item"><span class="tap-badge tap-a"><i class="fa-solid fa-xmark"></i> Absent / Spik</span></div>
+            <div class="guide-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="guide-item"><span class="tap-badge tap-n"><i class="fa-solid fa-minus"></i> Reset (Neutral)</span></div>
+            <span class="guide-tip"><i class="fa-solid fa-hand-pointer"></i> Tap on any period card to cycle status</span>
+          </div>
+
+          <!-- Period List Container -->
+          <div class="periods-container" id="periodsList">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. SUBJECT-WISE ATTENDANCE BREAKDOWN -->
+      <section class="subjects-section">
+        <div class="glass-card subjects-card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-chart-pie"></i> Subject Attendance & Bunk Status</h3>
+            <span class="badge-tag" id="subjectCountBadge">6 Courses</span>
+          </div>
+          <div class="subject-chips-list" id="subjectBreakdownList">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. INTERACTIVE CALENDAR -->
+      <section class="calendar-section">
+        <div class="glass-card calendar-card">
+          <!-- Calendar Header -->
+          <div class="calendar-controls">
+            <div class="month-selector">
+              <button class="cal-nav-btn" id="prevMonthBtn" title="Previous Month">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <h2 class="current-month-label" id="currentMonthYear">August 2026</h2>
+              <button class="cal-nav-btn" id="nextMonthBtn" title="Next Month">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+            <button class="today-jump-btn" id="jumpTodayBtn">
+              <i class="fa-solid fa-calendar-day"></i> Today
+            </button>
+          </div>
+
+          <!-- Calendar Weekday Headers -->
+          <div class="calendar-weekdays">
+            <span>Sun</span>
+            <span>Mon</span>
+            <span>Tue</span>
+            <span>Wed</span>
+            <span>Thu</span>
+            <span>Fri</span>
+            <span>Sat</span>
+          </div>
+
+          <!-- Calendar Grid Days -->
+          <div class="calendar-days-grid" id="calendarDaysGrid">
+            <!-- Dynamically populated via JS -->
+          </div>
+
+          <!-- Calendar Legend -->
+          <div class="calendar-legend">
+            <div class="legend-item"><span class="legend-dot dot-perfect"></span> 100% Attended</div>
+            <div class="legend-item"><span class="legend-dot dot-partial"></span> Partial</div>
+            <div class="legend-item"><span class="legend-dot dot-bunk"></span> All Bunked</div>
+            <div class="legend-item"><span class="legend-dot dot-holiday"></span> Holiday/Off</div>
+            <div class="legend-item"><span class="legend-dot dot-unmarked"></span> Unmarked</div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FULL TIMETABLE MODAL (Room FN-4 Sec-C Official Timetable Grid) -->
+  <div class="modal-overlay" id="timetableModal">
+    <div class="modal-card wide-modal glass-modal">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="inst-logo-icon"><i class="fa-solid fa-building-columns"></i></div>
+          <div>
+            <h3>NIT RAIPUR - Chemical Eng. (Sec-C) Timetable</h3>
+            <p class="modal-sub">Room No. FN-4 • 1st Sem (Autumn 2026) • W.E.F. 24th August 2026</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="closeTimetableModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="modal-body table-responsive">
+        <div class="timetable-grid-container">
+          <table class="nit-timetable-table">
+            <thead>
+              <tr>
+                <th>Period</th>
+                <th>I<br><span class="time-sub">09:00-09:50</span></th>
+                <th>II<br><span class="time-sub">09:50-10:40</span></th>
+                <th>III<br><span class="time-sub">10:40-11:30</span></th>
+                <th>IV<br><span class="time-sub">11:30-12:20</span></th>
+                <th>V<br><span class="time-sub">12:20-01:00</span></th>
+                <th class="recess-col">RECESS<br><span class="time-sub">01:00-02:00</span></th>
+                <th>VI<br><span class="time-sub">02:00-02:50</span></th>
+                <th>VII<br><span class="time-sub">02:50-03:40</span></th>
+                <th>VIII<br><span class="time-sub">03:40-04:30</span></th>
+                <th>IX<br><span class="time-sub">04:30-05:15</span></th>
+                <th>X<br><span class="time-sub">05:15-06:00</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="day-col">MONDAY</td>
+                <td colspan="2" class="lab-cell">
+                  <div class="batch-split"><strong>Physics-II Lab (C1)</strong></div>
+                  <div class="batch-split"><strong>Env & Ecology Lab (C2)</strong></div>
+                </td>
+                <td colspan="2" class="lab-cell">
+                  <div class="batch-split"><strong>Physics-II Lab (C2)</strong></div>
+                  <div class="batch-split"><strong>Env & Ecology Lab (C1)</strong></div>
+                </td>
+                <td class="free-cell">-</td>
+                <td rowspan="5" class="recess-body-cell">R<br>E<br>C<br>E<br>S<br>S</td>
+                <td class="subject-cell ds-cell">Data Structure</td>
+                <td class="subject-cell math-cell">Mathematics-I</td>
+                <td class="subject-cell mech-cell">Engineering Mechanics</td>
+                <td class="subject-cell cp-cell">Computer Programming</td>
+                <td class="free-cell">-</td>
+              </tr>
+              <tr>
+                <td class="day-col">TUESDAY</td>
+                <td class="subject-cell ds-cell">Data Structure</td>
+                <td class="subject-cell math-cell">Mathematics-I</td>
+                <td class="subject-cell phy-cell">Physics-II</td>
+                <td class="subject-cell ee-cell">Environment & Ecology</td>
+                <td class="free-cell">-</td>
+                <td colspan="2" class="lab-cell"><strong>Engg. Mechanics Lab (C1)</strong></td>
+                <td colspan="2" class="lab-cell"><strong>Engg. Mechanics Lab (C2)</strong></td>
+                <td class="free-cell">-</td>
+              </tr>
+              <tr>
+                <td class="day-col">WEDNESDAY</td>
+                <td class="free-cell">-</td>
+                <td class="free-cell">-</td>
+                <td class="subject-cell cp-cell">Computer Programming</td>
+                <td class="subject-cell mech-cell">Engineering Mechanics</td>
+                <td class="subject-cell mech-cell">Engineering Mechanics</td>
+                <td class="subject-cell ds-cell">Data Structure</td>
+                <td class="subject-cell phy-cell">Physics-II</td>
+                <td class="subject-cell math-cell">Mathematics-I</td>
+                <td class="subject-cell ee-cell">Environment & Ecology</td>
+                <td class="free-cell">-</td>
+              </tr>
+              <tr>
+                <td class="day-col">THURSDAY</td>
+                <td class="free-cell">-</td>
+                <td class="free-cell">-</td>
+                <td colspan="2" class="lab-cell"><strong>Computer Programming Lab (Batch C)</strong></td>
+                <td class="free-cell">-</td>
+                <td class="subject-cell math-cell">Mathematics-I</td>
+                <td class="subject-cell cp-cell">Computer Programming</td>
+                <td class="subject-cell phy-cell">Physics-II</td>
+                <td class="subject-cell ee-cell">Environment & Ecology</td>
+                <td class="free-cell">-</td>
+              </tr>
+              <tr>
+                <td class="day-col">FRIDAY</td>
+                <td class="free-cell">-</td>
+                <td class="free-cell">-</td>
+                <td class="free-cell">-</td>
+                <td class="free-cell">-</td>
+                <td class="free-cell">-</td>
+                <td colspan="3" class="lab-cell"><strong>Data Structure Lab (Batch C)</strong></td>
+                <td colspan="2" class="activity-cell"><strong>NCC / NSS</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FACULTY DIRECTORY MODAL -->
+  <div class="modal-overlay" id="facultyModal">
+    <div class="modal-card glass-modal">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="inst-logo-icon"><i class="fa-solid fa-address-book"></i></div>
+          <div>
+            <h3>Faculty & Department Directory</h3>
+            <p class="modal-sub">Official teacher contacts for NIT Raipur Chemical Eng (Sec-C)</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="closeFacultyModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="modal-body faculty-cards-grid" id="facultyListGrid">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- SETTINGS & DATA BACKUP MODAL -->
+  <div class="modal-overlay" id="settingsModal">
+    <div class="modal-card glass-modal">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="inst-logo-icon"><i class="fa-solid fa-gear"></i></div>
+          <div>
+            <h3>Settings & Data Management</h3>
+            <p class="modal-sub">Customize criteria, export backups or reset</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="closeSettingsModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="modal-body settings-body">
+        <div class="setting-group">
+          <label class="setting-label" for="targetCriteriaInput">
+            <span>Minimum Attendance Target (%)</span>
+            <span class="setting-desc">College default is 75% for exam eligibility</span>
+          </label>
+          <div class="input-with-unit">
+            <input type="number" id="targetCriteriaInput" min="50" max="100" value="75" class="custom-input">
+            <span class="unit">%</span>
+          </div>
+        </div>
+
+        <div class="setting-divider"></div>
+
+        <div class="setting-group">
+          <label class="setting-label">
+            <span>Backup & Sync Attendance Data</span>
+            <span class="setting-desc">Export your marked attendance as JSON or restore on another device</span>
+          </label>
+          <div class="backup-actions-row">
+            <button class="btn-primary" id="exportDataBtn"><i class="fa-solid fa-download"></i> Export Backup (.json)</button>
+            <label class="btn-secondary file-upload-btn">
+              <i class="fa-solid fa-upload"></i> Restore Backup
+              <input type="file" id="importDataInput" accept=".json" style="display:none;">
+            </label>
+          </div>
+        </div>
+
+        <div class="setting-divider"></div>
+
+        <div class="setting-group danger-group">
+          <label class="setting-label">
+            <span class="text-danger">Reset All Attendance</span>
+            <span class="setting-desc">Clear all marked attendance records and start fresh</span>
+          </label>
+          <button class="btn-danger" id="resetAllDataBtn"><i class="fa-solid fa-trash-can"></i> Reset All Records</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXTRA CLASS MODAL -->
+  <div class="modal-overlay" id="extraClassModal">
+    <div class="modal-card glass-modal small-modal">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="inst-logo-icon"><i class="fa-solid fa-calendar-plus"></i></div>
+          <div>
+            <h3>Add Extra Class</h3>
+            <p class="modal-sub" id="extraClassModalDate">For selected date</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="closeExtraClassModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <form id="extraClassForm" class="modal-body">
+        <div class="form-field">
+          <label for="extraSubjectSelect">Select Subject</label>
+          <select id="extraSubjectSelect" class="custom-input" required>
+            <option value="Data Structure">Data Structure</option>
+            <option value="Mathematics-I">Mathematics-I</option>
+            <option value="Physics-II">Physics-II</option>
+            <option value="Engineering Mechanics">Engineering Mechanics</option>
+            <option value="Computer Programming">Computer Programming</option>
+            <option value="Environment & Ecology">Environment & Ecology</option>
+            <option value="Physics-II Lab">Physics-II Lab</option>
+            <option value="Data Structure Lab">Data Structure Lab</option>
+            <option value="Computer Programming Lab">Computer Programming Lab</option>
+            <option value="Engg. Mechanics Lab">Engg. Mechanics Lab</option>
+            <option value="Env & Ecology Lab">Env & Ecology Lab</option>
+            <option value="NCC/NSS">NCC / NSS</option>
+            <option value="Other">Other / Custom</option>
+          </select>
+        </div>
+
+        <div class="form-field" id="customSubjectField" style="display: none;">
+          <label for="customSubjectInput">Custom Subject Name</label>
+          <input type="text" id="customSubjectInput" class="custom-input" placeholder="e.g. Remedial Class">
+        </div>
+
+        <div class="form-field">
+          <label for="extraTimeSlot">Time Slot</label>
+          <input type="text" id="extraTimeSlot" class="custom-input" placeholder="e.g. 05:15 - 06:00 PM" value="05:15 - 06:00 PM">
+        </div>
+
+        <div class="form-field">
+          <label for="extraInitialStatus">Initial Status</label>
+          <select id="extraInitialStatus" class="custom-input">
+            <option value="present">Present (Attended)</option>
+            <option value="absent">Absent (Bunked)</option>
+            <option value="none">Not Marked (Neutral)</option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-secondary" id="cancelExtraClassBtn">Cancel</button>
+          <button type="submit" class="btn-primary">Add Class</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="app.js"></script>
+</body>
+</html>
