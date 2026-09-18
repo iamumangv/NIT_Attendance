@@ -492,18 +492,44 @@
   // 4. CORE ATTENDANCE COMPUTATIONS & BUNK-O-METER
   // =========================================================================
 
+  // Complete Curriculum Course List (NIT Raipur FN-4 Sec-C)
+  const SEMESTER_SUBJECTS = [
+    { name: "Data Structure", type: "Theory", icon: "fa-code" },
+    { name: "Mathematics-I", type: "Theory", icon: "fa-square-root-variable" },
+    { name: "Physics-II", type: "Theory", icon: "fa-atom" },
+    { name: "Engineering Mechanics", type: "Theory", icon: "fa-gears" },
+    { name: "Computer Programming", type: "Theory", icon: "fa-laptop-code" },
+    { name: "Environment & Ecology", type: "Theory", icon: "fa-leaf" },
+    { name: "Physics-II Lab", type: "Lab", icon: "fa-flask" },
+    { name: "Environment & Ecology Lab", type: "Lab", icon: "fa-vial" },
+    { name: "Engineering Mechanics Lab", type: "Lab", icon: "fa-wrench" },
+    { name: "Computer Programming Lab", type: "Lab", icon: "fa-terminal" },
+    { name: "Data Structure Lab", type: "Lab", icon: "fa-network-wired" },
+    { name: "NCC / NSS", type: "Activity", icon: "fa-flag" }
+  ];
+
   function calculateAllStats() {
     let totalClasses = 0;
     let totalAttended = 0;
     let totalAbsent = 0;
     let totalCancelled = 0;
 
-    const subjectMap = {}; // { [subjectName]: { attended: 0, total: 0, absent: 0 } }
+    // Pre-populate with all curriculum subjects so they are always visible
+    const subjectMap = {};
+    SEMESTER_SUBJECTS.forEach(s => {
+      subjectMap[s.name] = {
+        attended: 0,
+        total: 0,
+        absent: 0,
+        type: s.type,
+        icon: s.icon
+      };
+    });
 
     function registerSubjectClass(subName, status, weight = 1) {
       if (!subName || subName === "Self Study / Library" || subName === "Lunch Break / Recess") return;
       if (!subjectMap[subName]) {
-        subjectMap[subName] = { attended: 0, total: 0, absent: 0 };
+        subjectMap[subName] = { attended: 0, total: 0, absent: 0, type: "Extra", icon: "fa-star" };
       }
 
       if (status === "present") {
@@ -571,37 +597,33 @@
   // Calculate Safe Bunk or Required Classes to reach Target %
   function getBunkAdvice(attended, total, targetPct) {
     if (total === 0) {
-      return { type: "empty", text: "No classes marked yet" };
+      return { type: "empty", text: "No classes yet" };
     }
 
     const currentPct = (attended / total) * 100;
     const targetFrac = targetPct / 100;
 
     if (currentPct >= targetPct) {
-      // How many classes can be safely bunked?
-      // (attended) / (total + X) >= targetFrac => attended >= targetFrac * total + targetFrac * X => X <= (attended - targetFrac * total) / targetFrac
       const safeBunks = Math.floor((attended - targetFrac * total) / targetFrac);
       if (safeBunks > 0) {
         return {
           type: "safe",
           bunks: safeBunks,
-          text: `You can safely bunk ${safeBunks} more class${safeBunks > 1 ? "es" : ""}!`
+          text: `Can bunk ${safeBunks}`
         };
       } else {
         return {
           type: "borderline",
           bunks: 0,
-          text: `You are exactly on track. Do not bunk next class!`
+          text: `On track (Don't bunk)`
         };
       }
     } else {
-      // How many consecutive classes must be attended to reach target %?
-      // (attended + Y) / (total + Y) >= targetFrac => attended + Y >= targetFrac * total + targetFrac * Y => Y * (1 - targetFrac) >= targetFrac * total - attended
       const reqClasses = Math.ceil((targetFrac * total - attended) / (1 - targetFrac));
       return {
         type: "danger",
         needed: reqClasses,
-        text: `Attend next ${reqClasses} class${reqClasses > 1 ? "es" : ""} consecutively to reach ${targetPct}%!`
+        text: `Need ${reqClasses} classes`
       };
     }
   }
@@ -645,7 +667,7 @@
     } else if (advice.type === "safe") {
       DOM.advisorHeadline.textContent = `Safe Zone (${roundedPct}%)`;
       DOM.advisorHeadline.className = "advisor-title safe-bunk-text";
-      DOM.advisorMessage.innerHTML = `Awesome! <strong>You can bunk ${advice.bunks} more class${advice.bunks > 1 ? "es" : ""}</strong> and still stay above ${stats.target}%.`;
+      DOM.advisorMessage.innerHTML = `Awesome! <strong>You can safely bunk ${advice.bunks} more class${advice.bunks > 1 ? "es" : ""}</strong> and still stay above ${stats.target}%.`;
       DOM.advisorIcon.className = "fa-solid fa-face-smile-beam";
       DOM.advisorIcon.style.color = "var(--success)";
     } else if (advice.type === "borderline") {
@@ -669,53 +691,63 @@
   function renderSubjectCards(stats) {
     DOM.subjectBreakdownList.innerHTML = "";
     const subjects = Object.entries(stats.subjectMap);
-    DOM.subjectCountBadge.textContent = `${subjects.length} Course${subjects.length === 1 ? "" : "s"}`;
+    DOM.subjectCountBadge.textContent = `${subjects.length} Subjects`;
 
-    if (subjects.length === 0) {
-      DOM.subjectBreakdownList.innerHTML = `
-        <div style="text-align: center; color: var(--text-dim); font-size: 0.8rem; padding: 1.5rem 0;">
-          <i class="fa-solid fa-book-open" style="font-size: 1.5rem; margin-bottom: 0.5rem; display: block;"></i>
-          No attendance records marked yet. Select a date to begin!
-        </div>
-      `;
-      return;
-    }
-
-    // Sort by lowest percentage first so student can see critical subjects
+    // Sort: marked subjects with lowest percentage first, then unmarked subjects
     subjects.sort((a, b) => {
-      const pctA = a[1].total > 0 ? (a[1].attended / a[1].total) : 0;
-      const pctB = b[1].total > 0 ? (b[1].attended / b[1].total) : 0;
+      if (a[1].total === 0 && b[1].total > 0) return 1;
+      if (a[1].total > 0 && b[1].total === 0) return -1;
+      const pctA = a[1].total > 0 ? (a[1].attended / a[1].total) : 1;
+      const pctB = b[1].total > 0 ? (b[1].attended / b[1].total) : 1;
       return pctA - pctB;
     });
 
     subjects.forEach(([subName, data]) => {
-      const pct = data.total > 0 ? Math.round((data.attended / data.total) * 100) : 0;
+      const hasClasses = data.total > 0;
+      const pct = hasClasses ? Math.round((data.attended / data.total) * 100) : null;
       const advice = getBunkAdvice(data.attended, data.total, stats.target);
 
-      let pctClass = "pct-safe";
-      let fillClass = "fill-safe";
-      if (pct < stats.target) {
-        pctClass = "pct-danger";
-        fillClass = "fill-danger";
-      } else if (pct < stats.target + 8) {
-        pctClass = "pct-warning";
-        fillClass = "fill-warning";
+      let pctClass = "pct-neutral";
+      let fillClass = "fill-neutral";
+      let pctDisplay = "-";
+
+      if (hasClasses) {
+        pctDisplay = `${pct}%`;
+        if (pct < stats.target) {
+          pctClass = "pct-danger";
+          fillClass = "fill-danger";
+        } else if (pct < stats.target + 8) {
+          pctClass = "pct-warning";
+          fillClass = "fill-warning";
+        } else {
+          pctClass = "pct-safe";
+          fillClass = "fill-safe";
+        }
       }
 
+      const iconClass = data.icon || "fa-book";
+      const typeTag = data.type || "Theory";
+
       const card = document.createElement("div");
-      card.className = "subject-item-card";
+      card.className = `subject-item-card ${hasClasses ? 'has-data' : 'no-data'}`;
       card.innerHTML = `
         <div class="subject-item-top">
-          <span class="sub-title" title="${subName}">${subName}</span>
-          <span class="sub-percentage-pill ${pctClass}">${pct}%</span>
+          <div class="sub-name-wrap">
+            <span class="sub-icon"><i class="fa-solid ${iconClass}"></i></span>
+            <div class="sub-text-col">
+              <span class="sub-title" title="${subName}">${subName}</span>
+              <span class="sub-type-badge">${typeTag}</span>
+            </div>
+          </div>
+          <span class="sub-percentage-pill ${pctClass}">${pctDisplay}</span>
         </div>
         <div class="subject-item-progress-bar">
-          <div class="progress-fill ${fillClass}" style="width: ${Math.min(pct, 100)}%;"></div>
+          <div class="progress-fill ${fillClass}" style="width: ${hasClasses ? Math.min(pct, 100) : 0}%;"></div>
         </div>
         <div class="subject-item-meta">
-          <span>${data.attended} / ${data.total} Attended</span>
-          <span class="sub-bunk-advice ${advice.type === 'safe' ? 'safe-bunk-text' : advice.type === 'danger' ? 'danger-bunk-text' : ''}">
-            ${advice.type === 'safe' ? `Can bunk ${advice.bunks}` : advice.type === 'danger' ? `Need ${advice.needed} classes` : 'On track'}
+          <span class="sub-count-txt"><strong>${data.attended}</strong> / ${data.total} <small>Attended</small></span>
+          <span class="sub-bunk-advice ${advice.type === 'safe' ? 'safe-bunk-text' : advice.type === 'danger' ? 'danger-bunk-text' : 'muted-bunk-text'}">
+            ${advice.text}
           </span>
         </div>
       `;

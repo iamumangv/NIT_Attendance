@@ -91,7 +91,7 @@ body {
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
-  opacity: 0.28;
+  opacity: 0.25;
   animation: floatOrb 20s infinite alternate ease-in-out;
 }
 
@@ -131,14 +131,14 @@ body {
   100% { transform: translateY(-30px) scale(0.95); }
 }
 
-/* Main Container Layout */
+/* Main Container Layout - Harmonious Spacing */
 .app-container {
-  max-width: 1100px;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 1.5rem 1.25rem 3.5rem;
+  padding: 1.25rem 1.25rem 3rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 /* Glassmorphism Card Style */
@@ -157,10 +157,10 @@ body {
    ========================================================= */
 
 .app-header {
-  padding: 1.25rem 1.5rem;
+  padding: 1.2rem 1.4rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .header-main {
@@ -174,18 +174,18 @@ body {
 .logo-area {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.9rem;
 }
 
 .institute-badge {
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   background: linear-gradient(135deg, #3b82f6, #8b5cf6);
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   color: #fff;
   box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
 }
@@ -219,7 +219,7 @@ body {
 
 .branch-title {
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -232,7 +232,7 @@ body {
   background: linear-gradient(135deg, #10b981, #059669);
   color: #fff;
   font-size: 0.8rem;
-  padding: 0.2rem 0.6rem;
+  padding: 0.18rem 0.55rem;
   border-radius: 6px;
   font-weight: 700;
 }
@@ -240,7 +240,7 @@ body {
 .room-badge {
   background: rgba(255, 255, 255, 0.08);
   font-size: 0.75rem;
-  padding: 0.2rem 0.6rem;
+  padding: 0.18rem 0.55rem;
   border-radius: 6px;
   color: #93c5fd;
   border: 1px solid rgba(147, 197, 253, 0.2);
@@ -250,7 +250,7 @@ body {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.85rem;
   flex-wrap: wrap;
 }
 
@@ -259,13 +259,13 @@ body {
   align-items: center;
   gap: 0.5rem;
   background: rgba(0, 0, 0, 0.25);
-  padding: 0.35rem 0.5rem;
+  padding: 0.3rem 0.45rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--glass-border);
 }
 
 .batch-label {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
   color: var(--text-muted);
   padding-left: 0.25rem;
@@ -283,8 +283,8 @@ body {
   background: transparent;
   border: none;
   outline: none;
-  padding: 0.35rem 0.8rem;
-  font-size: 0.8rem;
+  padding: 0.32rem 0.75rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--text-muted);
   border-radius: 6px;
@@ -308,13 +308,13 @@ body {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--glass-border);
   color: var(--text-main);
-  padding: 0.5rem 0.85rem;
+  padding: 0.45rem 0.8rem;
   border-radius: var(--radius-md);
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
   transition: all 0.2s ease;
 }
@@ -340,7 +340,7 @@ body {
 
 @keyframes pulseInstall {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  50% { transform: scale(1.04); }
 }
 
 /* =========================================================
@@ -354,19 +354,19 @@ body {
   background: rgba(10, 15, 26, 0.55);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
-  padding: 0.85rem 1.15rem;
+  padding: 0.75rem 1.1rem;
   align-items: center;
 }
 
 .stat-pill {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
+  gap: 0.85rem;
 }
 
 .stat-progress-ring {
-  width: 58px;
-  height: 58px;
+  width: 54px;
+  height: 54px;
   position: relative;
   flex-shrink: 0;
 }
@@ -405,7 +405,7 @@ body {
 }
 
 .stat-label {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--text-muted);
   font-weight: 500;
   text-transform: uppercase;
@@ -413,7 +413,7 @@ body {
 }
 
 .stat-numbers {
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-main);
 }
@@ -421,7 +421,7 @@ body {
 .stat-numbers strong {
   font-family: var(--font-display);
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
 }
 
 /* Advisor Message Box */
@@ -429,22 +429,22 @@ body {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-sm);
-  padding: 0.6rem 1rem;
+  padding: 0.55rem 0.9rem;
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.8rem;
 }
 
 .advisor-icon {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: rgba(59, 130, 246, 0.15);
   color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   flex-shrink: 0;
 }
 
@@ -456,18 +456,14 @@ body {
 .advisor-title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: #fff;
 }
 
 .advisor-desc {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
   line-height: 1.35;
-}
-
-.advisor-desc strong {
-  color: #e2e8f0;
 }
 
 .safe-bunk-text {
@@ -480,10 +476,14 @@ body {
   font-weight: 700;
 }
 
+.muted-bunk-text {
+  color: var(--text-dim) !important;
+}
+
 /* Mini Counters Group */
 .quick-stats-group {
   display: flex;
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
 
 .mini-counter {
@@ -491,21 +491,21 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0.4rem 0.75rem;
+  padding: 0.35rem 0.65rem;
   border-radius: var(--radius-sm);
-  min-width: 68px;
+  min-width: 64px;
   border: 1px solid transparent;
 }
 
 .mini-num {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 800;
   line-height: 1.1;
 }
 
 .mini-lbl {
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -536,7 +536,7 @@ body {
 .dashboard-stack {
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 1.25rem;
   width: 100%;
 }
 
@@ -546,10 +546,10 @@ body {
 }
 
 .schedule-card {
-  padding: 1.5rem;
+  padding: 1.25rem 1.4rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.1rem;
 }
 
 .schedule-header {
@@ -557,31 +557,31 @@ body {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 1rem;
-  padding-bottom: 1.2rem;
+  gap: 0.9rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid var(--glass-border);
 }
 
 .day-title-box {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.9rem;
 }
 
 .date-badge {
   background: linear-gradient(135deg, rgba(79, 140, 255, 0.25), rgba(139, 92, 246, 0.25));
   border: 1px solid rgba(79, 140, 255, 0.4);
   border-radius: var(--radius-md);
-  padding: 0.4rem 0.8rem;
+  padding: 0.35rem 0.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 58px;
+  min-width: 56px;
 }
 
 .date-month {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 800;
   text-transform: uppercase;
   color: #93c5fd;
@@ -590,7 +590,7 @@ body {
 
 .date-num {
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 800;
   color: #fff;
   line-height: 1;
@@ -604,20 +604,20 @@ body {
 .day-row {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
 
 .day-row h2 {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #fff;
 }
 
 .day-status-pill {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  padding: 0.18rem 0.55rem;
+  padding: 0.16rem 0.5rem;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.08);
   color: var(--text-muted);
@@ -630,7 +630,7 @@ body {
 }
 
 .full-date-str {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
 }
 
@@ -638,7 +638,7 @@ body {
 .day-quick-actions {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   flex-wrap: wrap;
 }
 
@@ -646,9 +646,9 @@ body {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--glass-border);
   color: var(--text-main);
-  padding: 0.45rem 0.75rem;
+  padding: 0.4rem 0.7rem;
   border-radius: var(--radius-sm);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
   cursor: pointer;
   display: flex;
@@ -692,12 +692,12 @@ body {
   background: rgba(0, 0, 0, 0.25);
   border: 1px dashed var(--glass-border);
   border-radius: var(--radius-md);
-  padding: 0.55rem 1rem;
+  padding: 0.5rem 0.9rem;
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.6rem;
   flex-wrap: wrap;
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   color: var(--text-muted);
 }
 
@@ -705,10 +705,10 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  padding: 0.18rem 0.5rem;
+  padding: 0.16rem 0.45rem;
   border-radius: 6px;
   font-weight: 700;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
 }
 
 .tap-p { background: var(--success-bg); color: var(--success); border: 1px solid var(--success-border); }
@@ -733,8 +733,7 @@ body {
 .periods-container {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
-  padding-right: 0.25rem;
+  gap: 0.75rem;
 }
 
 /* Single Period Interactive Card */
@@ -742,7 +741,7 @@ body {
   background: rgba(18, 24, 38, 0.85);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
-  padding: 1rem 1.15rem;
+  padding: 0.9rem 1.1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -750,7 +749,7 @@ body {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;
 }
 
@@ -776,7 +775,6 @@ body {
   transform: scale(0.99);
 }
 
-/* Period States */
 .period-card.state-present {
   background: rgba(34, 197, 94, 0.08);
   border-color: var(--success-border);
@@ -813,20 +811,19 @@ body {
   background: var(--warning);
 }
 
-/* Period Info Elements */
 .period-meta-slot {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
+  gap: 0.85rem;
 }
 
 .period-num-badge {
   font-family: var(--font-display);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 800;
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
   background: rgba(255, 255, 255, 0.06);
   display: flex;
   align-items: center;
@@ -843,19 +840,19 @@ body {
 
 .period-subject-name {
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #fff;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   flex-wrap: wrap;
 }
 
 .lab-tag {
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 700;
-  padding: 0.15rem 0.45rem;
+  padding: 0.12rem 0.4rem;
   border-radius: 4px;
   background: rgba(168, 85, 247, 0.2);
   color: #c084fc;
@@ -863,9 +860,9 @@ body {
 }
 
 .extra-tag {
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 700;
-  padding: 0.15rem 0.45rem;
+  padding: 0.12rem 0.4rem;
   border-radius: 4px;
   background: rgba(59, 130, 246, 0.2);
   color: #93c5fd;
@@ -875,10 +872,10 @@ body {
 .period-subinfo {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  font-size: 0.78rem;
+  gap: 0.8rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
-  margin-top: 0.15rem;
+  margin-top: 0.12rem;
   flex-wrap: wrap;
 }
 
@@ -896,23 +893,22 @@ body {
   gap: 0.3rem;
 }
 
-/* Period Status Badge & Cycle Trigger */
 .period-action-wrap {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
 
 .period-status-pill {
-  padding: 0.45rem 1rem;
+  padding: 0.42rem 0.9rem;
   border-radius: 20px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   display: flex;
   align-items: center;
   gap: 0.4rem;
   transition: all 0.2s;
-  min-width: 105px;
+  min-width: 100px;
   justify-content: center;
 }
 
@@ -946,10 +942,10 @@ body {
   background: transparent;
   border: none;
   color: var(--text-dim);
-  padding: 0.4rem;
+  padding: 0.35rem;
   cursor: pointer;
   border-radius: 6px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 }
 
 .period-more-btn:hover {
@@ -957,43 +953,42 @@ body {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* Empty or Weekend State */
 .schedule-empty-state {
   text-align: center;
-  padding: 3rem 1.5rem;
+  padding: 2.5rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.9rem;
 }
 
 .empty-icon {
-  width: 70px;
-  height: 70px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.04);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   color: var(--text-dim);
 }
 
 .empty-title {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #fff;
 }
 
 .empty-desc {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
   max-width: 360px;
 }
 
 /* =========================================================
-   2. SUBJECT-WISE BREAKDOWN SECTION (RESPONSIVE GRID)
+   2. SUBJECT-WISE BREAKDOWN (ALL SUBJECTS NO-SCROLL GRID)
    ========================================================= */
 
 .subjects-section {
@@ -1001,19 +996,20 @@ body {
 }
 
 .subjects-card {
-  padding: 1.25rem 1.5rem;
+  padding: 1.25rem 1.4rem;
+  overflow: visible;
 }
 
 .card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.15rem;
+  margin-bottom: 1rem;
 }
 
 .card-header h3 {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -1024,28 +1020,29 @@ body {
 .badge-tag {
   font-size: 0.72rem;
   font-weight: 600;
-  padding: 0.2rem 0.6rem;
+  padding: 0.18rem 0.55rem;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   color: var(--text-muted);
 }
 
-/* Grid of Subjects for Beautiful Responsive Layout */
+/* Redesigned Responsive Grid: All Subjects Visible At Once */
 .subject-chips-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 0.85rem;
-  padding-right: 0.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 0.75rem;
+  overflow: visible;
+  max-height: none;
 }
 
 .subject-item-card {
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.28);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
-  padding: 0.85rem 1rem;
+  padding: 0.75rem 0.85rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.45rem;
   transition: all 0.2s;
 }
 
@@ -1055,56 +1052,107 @@ body {
   transform: translateY(-2px);
 }
 
+.subject-item-card.no-data {
+  opacity: 0.82;
+}
+
 .subject-item-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.sub-name-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.sub-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: rgba(79, 140, 255, 0.12);
+  color: #93c5fd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  flex-shrink: 0;
+}
+
+.sub-text-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .sub-title {
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.84rem;
   color: #f1f5f9;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 200px;
+}
+
+.sub-type-badge {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 .sub-percentage-pill {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 0.92rem;
+  font-size: 0.86rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 6px;
+  flex-shrink: 0;
 }
 
-.pct-safe { color: var(--success); }
-.pct-warning { color: var(--warning); }
-.pct-danger { color: var(--danger); }
+.pct-safe { color: var(--success); background: var(--success-bg); }
+.pct-warning { color: var(--warning); background: var(--warning-bg); }
+.pct-danger { color: var(--danger); background: var(--danger-bg); }
+.pct-neutral { color: var(--text-dim); background: rgba(255, 255, 255, 0.05); }
 
 .subject-item-progress-bar {
   width: 100%;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
   overflow: hidden;
 }
 
 .progress-fill {
   height: 100%;
-  border-radius: 10px;
+  border-radius: 8px;
   transition: width 0.4s ease;
 }
 
 .progress-fill.fill-safe { background: linear-gradient(90deg, #10b981, #34d399); }
 .progress-fill.fill-warning { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
 .progress-fill.fill-danger { background: linear-gradient(90deg, #f43f5e, #fb7185); }
+.progress-fill.fill-neutral { background: transparent; }
 
 .subject-item-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   color: var(--text-muted);
+}
+
+.sub-count-txt strong {
+  color: #fff;
+}
+
+.sub-count-txt small {
+  color: var(--text-dim);
 }
 
 .sub-bunk-advice {
@@ -1120,28 +1168,28 @@ body {
 }
 
 .calendar-card {
-  padding: 1.5rem;
+  padding: 1.25rem 1.4rem;
 }
 
 .calendar-controls {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.15rem;
 }
 
 .month-selector {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
 }
 
 .cal-nav-btn {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--glass-border);
   color: var(--text-main);
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -1157,10 +1205,10 @@ body {
 
 .current-month-label {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: #fff;
-  min-width: 160px;
+  min-width: 150px;
   text-align: center;
 }
 
@@ -1168,15 +1216,15 @@ body {
   background: rgba(79, 140, 255, 0.15);
   border: 1px solid rgba(79, 140, 255, 0.3);
   color: #93c5fd;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  padding: 0.45rem 0.85rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .today-jump-btn:hover {
@@ -1189,24 +1237,23 @@ body {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   text-align: center;
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 700;
   color: var(--text-dim);
   text-transform: uppercase;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.65rem;
   letter-spacing: 0.05em;
 }
 
 .calendar-days-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
+  gap: 6px;
 }
 
-/* Individual Calendar Day Cell */
 .cal-day-cell {
   aspect-ratio: 1;
-  min-height: 48px;
+  min-height: 42px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1245,14 +1292,14 @@ body {
   position: absolute;
   top: 4px;
   right: 4px;
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--primary);
 }
 
 .cal-day-number {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-main);
   line-height: 1;
@@ -1262,12 +1309,11 @@ body {
   color: #fff;
 }
 
-/* Calendar Day Status Indicators */
 .cal-day-status-indicator {
   display: flex;
   gap: 2px;
   position: absolute;
-  bottom: 5px;
+  bottom: 4px;
 }
 
 .status-dot {
@@ -1282,23 +1328,22 @@ body {
 .dot-holiday { background: var(--holiday-color); box-shadow: 0 0 4px var(--holiday-color); }
 .dot-unmarked { background: var(--text-dim); }
 
-/* Calendar Legend */
 .calendar-legend {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  margin-top: 1.25rem;
-  padding-top: 1rem;
+  gap: 0.9rem;
+  margin-top: 1.15rem;
+  padding-top: 0.9rem;
   border-top: 1px solid var(--glass-border);
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.76rem;
+  gap: 0.35rem;
+  font-size: 0.74rem;
   color: var(--text-muted);
 }
 
@@ -1421,21 +1466,10 @@ body {
 }
 
 .modal-body {
-  padding: 1.5rem;
+  padding: 1.4rem;
   overflow-y: auto;
 }
 
-/* Custom Scrollbar */
-.modal-body::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-.modal-body::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 10px;
-}
-
-/* Full Timetable Table Styling */
 .table-responsive {
   overflow-x: auto;
 }
@@ -1500,17 +1534,17 @@ body {
 .faculty-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .faculty-card {
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
-  padding: 1rem;
+  padding: 0.9rem;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.5rem;
   transition: all 0.2s;
 }
 
@@ -1539,7 +1573,7 @@ body {
   flex-direction: column;
   gap: 0.35rem;
   font-size: 0.78rem;
-  margin-top: 0.25rem;
+  margin-top: 0.2rem;
 }
 
 .fac-link {
@@ -1560,25 +1594,25 @@ body {
 .settings-body {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.15rem;
 }
 
 .setting-group {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.55rem;
 }
 
 .setting-label {
   display: flex;
   flex-direction: column;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: #fff;
 }
 
 .setting-desc {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: var(--text-muted);
   font-weight: 400;
 }
@@ -1594,9 +1628,9 @@ body {
   background: rgba(0, 0, 0, 0.4);
   border: 1px solid var(--glass-border);
   color: #fff;
-  padding: 0.6rem 0.85rem;
+  padding: 0.55rem 0.8rem;
   border-radius: var(--radius-sm);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   outline: none;
   transition: border-color 0.2s;
 }
@@ -1630,14 +1664,14 @@ body {
   background: var(--primary);
   color: #fff;
   border: none;
-  padding: 0.65rem 1.2rem;
+  padding: 0.6rem 1.15rem;
   border-radius: var(--radius-sm);
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   transition: all 0.2s;
 }
 
@@ -1650,14 +1684,14 @@ body {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid var(--glass-border);
   color: #fff;
-  padding: 0.65rem 1.2rem;
+  padding: 0.6rem 1.15rem;
   border-radius: var(--radius-sm);
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   transition: all 0.2s;
 }
 
@@ -1670,14 +1704,14 @@ body {
   background: rgba(244, 63, 94, 0.15);
   border: 1px solid var(--danger-border);
   color: var(--danger);
-  padding: 0.65rem 1.2rem;
+  padding: 0.6rem 1.15rem;
   border-radius: var(--radius-sm);
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   transition: all 0.2s;
 }
 
@@ -1695,12 +1729,12 @@ body {
 .form-field {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  margin-bottom: 1rem;
+  gap: 0.35rem;
+  margin-bottom: 0.9rem;
 }
 
 .form-field label {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #cbd5e1;
 }
@@ -1709,7 +1743,7 @@ body {
   display: flex;
   justify-content: flex-end;
   gap: 0.75rem;
-  margin-top: 1.25rem;
+  margin-top: 1.15rem;
 }
 
 /* Toast Notifications */
@@ -1720,7 +1754,7 @@ body {
   z-index: 1100;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.55rem;
   pointer-events: none;
 }
 
@@ -1728,14 +1762,14 @@ body {
   background: #1e293b;
   border: 1px solid var(--glass-border-hover);
   color: #fff;
-  padding: 0.75rem 1.2rem;
+  padding: 0.7rem 1.1rem;
   border-radius: var(--radius-md);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
   box-shadow: var(--shadow-lg);
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.55rem;
   animation: slideInToast 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   pointer-events: auto;
 }
@@ -1752,7 +1786,7 @@ body {
 @media (max-width: 1024px) {
   .bunkometer-ribbon {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 0.85rem;
   }
 
   .stat-pill {
@@ -1762,11 +1796,19 @@ body {
   .target-advisor {
     justify-content: flex-start;
   }
+
+  .subject-chips-list {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
 }
 
 @media (max-width: 640px) {
   .app-container {
     padding: 0.75rem 0.5rem 2rem;
+    gap: 1rem;
+  }
+
+  .dashboard-stack {
     gap: 1rem;
   }
 
@@ -1798,30 +1840,52 @@ body {
   .action-pill-btn {
     flex: 1;
     justify-content: center;
-    padding: 0.4rem 0.4rem;
+    padding: 0.38rem 0.4rem;
     font-size: 0.72rem;
   }
 
   .period-card {
-    padding: 0.85rem 0.9rem;
-    gap: 0.6rem;
+    padding: 0.8rem 0.85rem;
+    gap: 0.5rem;
   }
 
   .period-subject-name {
-    font-size: 0.92rem;
+    font-size: 0.9rem;
   }
 
   .period-subinfo {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
   }
 
   .period-status-pill {
-    padding: 0.35rem 0.7rem;
-    font-size: 0.75rem;
-    min-width: 85px;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.74rem;
+    min-width: 82px;
   }
 
   .subject-chips-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.55rem;
+  }
+
+  .sub-icon {
+    display: none;
+  }
+
+  .subject-item-card {
+    padding: 0.65rem 0.7rem;
+    gap: 0.35rem;
+  }
+
+  .sub-title {
+    font-size: 0.78rem;
+  }
+
+  .sub-count-txt {
+    font-size: 0.68rem;
+  }
+
+  .sub-bunk-advice {
+    font-size: 0.66rem;
   }
 }
