@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,10 +17,13 @@
   <!-- Google Fonts & Font Awesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="app-background">
     <div class="glow-orb orb-1"></div>
@@ -40,7 +44,8 @@
               <span class="inst-tag">NIT RAIPUR</span>
               <span class="semester-pill">Autumn 2026 • 1st Sem</span>
             </div>
-            <h1 class="branch-title">Chemical Eng. <span class="sec-badge">Sec-C</span> <span class="room-badge">Room FN-4</span></h1>
+            <h1 class="branch-title">Chemical Eng. <span class="sec-badge">Sec-C</span> <span class="room-badge">Room
+                FN-4</span></h1>
           </div>
         </div>
 
@@ -54,7 +59,8 @@
           </div>
 
           <div class="utility-buttons">
-            <button class="btn-icon install-pwa-btn" id="installAppBtn" title="Install App on Phone / PC" style="display: none;">
+            <button class="btn-icon install-pwa-btn" id="installAppBtn" title="Install App on Phone / PC"
+              style="display: none;">
               <i class="fa-solid fa-download"></i>
               <span class="btn-text">Install App</span>
             </button>
@@ -78,14 +84,17 @@
         <div class="stat-pill overall-stat">
           <div class="stat-progress-ring" id="overallRing">
             <svg viewBox="0 0 36 36" class="circular-chart">
-              <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-              <path class="circle" id="overallRingProgress" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="circle-bg"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="circle" id="overallRingProgress" stroke-dasharray="0, 100"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
               <text x="18" y="20.5" class="percentage" id="overallPercentageText">0%</text>
             </svg>
           </div>
           <div class="stat-meta">
             <span class="stat-label">Overall Attendance</span>
-            <span class="stat-numbers"><strong id="totalAttended">0</strong> / <span id="totalClasses">0</span> classes</span>
+            <span class="stat-numbers"><strong id="totalAttended">0</strong> / <span id="totalClasses">0</span>
+              classes</span>
           </div>
         </div>
 
@@ -95,7 +104,8 @@
           </div>
           <div class="advisor-content">
             <div class="advisor-title" id="advisorHeadline">Target: 75% Attendance</div>
-            <div class="advisor-desc" id="advisorMessage">Mark classes on the calendar to see your safe bunk calculations!</div>
+            <div class="advisor-desc" id="advisorMessage">Mark classes on the calendar to see your safe bunk
+              calculations!</div>
           </div>
         </div>
 
@@ -146,7 +156,8 @@
               <button class="action-pill-btn btn-mark-all-a" id="markAllAbsentBtn" title="Mark all periods absent/spik">
                 <i class="fa-solid fa-user-xmark"></i> All Absent
               </button>
-              <button class="action-pill-btn btn-mark-holiday" id="toggleHolidayBtn" title="Mark day as holiday/no class">
+              <button class="action-pill-btn btn-mark-holiday" id="toggleHolidayBtn"
+                title="Mark day as holiday/no class">
                 <i class="fa-solid fa-mug-hot"></i> Holiday
               </button>
               <button class="action-pill-btn btn-add-extra" id="addExtraClassBtn" title="Add extra period to this day">
@@ -159,10 +170,13 @@
           <div class="tap-guide-banner">
             <div class="guide-item"><span class="tap-badge tap-p"><i class="fa-solid fa-check"></i> Present</span></div>
             <div class="guide-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            <div class="guide-item"><span class="tap-badge tap-a"><i class="fa-solid fa-xmark"></i> Absent / Spik</span></div>
+            <div class="guide-item"><span class="tap-badge tap-a"><i class="fa-solid fa-xmark"></i> Absent / Spik</span>
+            </div>
             <div class="guide-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            <div class="guide-item"><span class="tap-badge tap-n"><i class="fa-solid fa-minus"></i> Reset (Neutral)</span></div>
-            <span class="guide-tip"><i class="fa-solid fa-hand-pointer"></i> Tap on any period card to cycle status</span>
+            <div class="guide-item"><span class="tap-badge tap-n"><i class="fa-solid fa-minus"></i> Reset
+                (Neutral)</span></div>
+            <span class="guide-tip"><i class="fa-solid fa-hand-pointer"></i> Tap on any period card to cycle
+              status</span>
           </div>
 
           <!-- Period List Container -->
@@ -172,20 +186,7 @@
         </div>
       </section>
 
-      <!-- 2. SUBJECT-WISE ATTENDANCE BREAKDOWN -->
-      <section class="subjects-section">
-        <div class="glass-card subjects-card">
-          <div class="card-header">
-            <h3><i class="fa-solid fa-chart-pie"></i> Subject Attendance & Bunk Status</h3>
-            <span class="badge-tag" id="subjectCountBadge">6 Courses</span>
-          </div>
-          <div class="subject-chips-list" id="subjectBreakdownList">
-            <!-- Dynamically populated via JS -->
-          </div>
-        </div>
-      </section>
-
-      <!-- 3. INTERACTIVE CALENDAR -->
+      <!-- 2. INTERACTIVE CALENDAR -->
       <section class="calendar-section">
         <div class="glass-card calendar-card">
           <!-- Calendar Header -->
@@ -227,6 +228,19 @@
             <div class="legend-item"><span class="legend-dot dot-bunk"></span> All Bunked</div>
             <div class="legend-item"><span class="legend-dot dot-holiday"></span> Holiday/Off</div>
             <div class="legend-item"><span class="legend-dot dot-unmarked"></span> Unmarked</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. SUBJECT-WISE ATTENDANCE BREAKDOWN -->
+      <section class="subjects-section">
+        <div class="glass-card subjects-card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-chart-pie"></i> Subject Attendance & Bunk Status</h3>
+            <span class="badge-tag" id="subjectCountBadge">6 Courses</span>
+          </div>
+          <div class="subject-chips-list" id="subjectBreakdownList">
+            <!-- Dynamically populated via JS -->
           </div>
         </div>
       </section>
@@ -329,7 +343,8 @@
                 <td class="free-cell">-</td>
                 <td class="free-cell">-</td>
                 <td class="free-cell">-</td>
-                <td colspan="3" class="lab-cell"><strong>Data Structure Lab (Batch C)</strong></td>
+                <td class="free-cell">-</td>
+                <td colspan="2" class="lab-cell"><strong>Data Structure Lab (Batch C)</strong></td>
                 <td colspan="2" class="activity-cell"><strong>NCC / NSS</strong></td>
               </tr>
             </tbody>
@@ -393,7 +408,8 @@
             <span class="setting-desc">Export your marked attendance as JSON or restore on another device</span>
           </label>
           <div class="backup-actions-row">
-            <button class="btn-primary" id="exportDataBtn"><i class="fa-solid fa-download"></i> Export Backup (.json)</button>
+            <button class="btn-primary" id="exportDataBtn"><i class="fa-solid fa-download"></i> Export Backup
+              (.json)</button>
             <label class="btn-secondary file-upload-btn">
               <i class="fa-solid fa-upload"></i> Restore Backup
               <input type="file" id="importDataInput" accept=".json" style="display:none;">
@@ -408,7 +424,8 @@
             <span class="text-danger">Reset All Attendance</span>
             <span class="setting-desc">Clear all marked attendance records and start fresh</span>
           </label>
-          <button class="btn-danger" id="resetAllDataBtn"><i class="fa-solid fa-trash-can"></i> Reset All Records</button>
+          <button class="btn-danger" id="resetAllDataBtn"><i class="fa-solid fa-trash-can"></i> Reset All
+            Records</button>
         </div>
       </div>
     </div>
@@ -455,7 +472,8 @@
 
         <div class="form-field">
           <label for="extraTimeSlot">Time Slot</label>
-          <input type="text" id="extraTimeSlot" class="custom-input" placeholder="e.g. 05:15 - 06:00 PM" value="05:15 - 06:00 PM">
+          <input type="text" id="extraTimeSlot" class="custom-input" placeholder="e.g. 05:15 - 06:00 PM"
+            value="05:15 - 06:00 PM">
         </div>
 
         <div class="form-field">
@@ -481,4 +499,5 @@
   <!-- Main JavaScript File -->
   <script src="app.js"></script>
 </body>
+
 </html>

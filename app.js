@@ -82,7 +82,7 @@
         getSubject: (batch) => batch === "C1" ? "Physics-II Lab" : "Environment & Ecology Lab",
         getFaculty: (batch) => batch === "C1" ? "Dr. Amit Kumar Prasad" : "Prof. Shyama Prasad Mahapatra",
         isLab: true,
-        countWeight: 2
+        countWeight: 1
       },
       {
         id: "mon-p3-p4",
@@ -92,7 +92,7 @@
         getSubject: (batch) => batch === "C1" ? "Environment & Ecology Lab" : "Physics-II Lab",
         getFaculty: (batch) => batch === "C1" ? "Prof. Shyama Prasad Mahapatra" : "Dr. Amit Kumar Prasad",
         isLab: true,
-        countWeight: 2
+        countWeight: 1
       },
       {
         id: "mon-recess",
@@ -186,7 +186,7 @@
         isBatchSpecific: true,
         activeBatch: "C1",
         isLab: true,
-        countWeight: 2
+        countWeight: 1
       },
       {
         id: "tue-p8-p9",
@@ -198,7 +198,7 @@
         isBatchSpecific: true,
         activeBatch: "C2",
         isLab: true,
-        countWeight: 2
+        countWeight: 1
       }
     ],
 
@@ -278,7 +278,7 @@
         subject: "Computer Programming Lab",
         faculty: "Dr. Satish Kumar",
         isLab: true,
-        countWeight: 2
+        countWeight: 1
       },
       {
         id: "thu-recess",
@@ -331,13 +331,13 @@
         subject: "Lunch Break / Recess"
       },
       {
-        id: "fri-p6-p7-p8",
-        period: "VI, VII & VIII",
-        time: "02:00 - 04:30 PM",
+        id: "fri-p7-p8",
+        period: "VII & VIII",
+        time: "02:50 - 04:30 PM",
         subject: "Data Structure Lab",
         faculty: "Dr. Satish Kumar",
         isLab: true,
-        countWeight: 3
+        countWeight: 1
       },
       {
         id: "fri-p9-p10",
@@ -346,7 +346,7 @@
         subject: "NCC / NSS",
         faculty: "Officer In-charge",
         isActivity: true,
-        countWeight: 2
+        countWeight: 1
       }
     ],
 
@@ -380,6 +380,16 @@
         AppState.batch = parsed.batch || "C1";
         AppState.targetPercentage = parsed.targetPercentage || 75;
         AppState.attendanceMap = parsed.attendanceMap || {};
+
+        // Backward compatibility migration for Friday Data Structure Lab
+        Object.values(AppState.attendanceMap).forEach(day => {
+          if (day && day.periods && day.periods["fri-p6-p7-p8"]) {
+            if (!day.periods["fri-p7-p8"]) {
+              day.periods["fri-p7-p8"] = day.periods["fri-p6-p7-p8"];
+            }
+            delete day.periods["fri-p6-p7-p8"];
+          }
+        });
       }
     } catch (e) {
       console.warn("Could not load stored state, initializing fresh:", e);
@@ -994,7 +1004,7 @@
           <div class="period-details">
             <span class="period-subject-name">
               ${subjectName}
-              ${p.isLab ? `<span class="lab-tag"><i class="fa-solid fa-flask"></i> Lab (${p.countWeight} Hrs)</span>` : ''}
+              ${p.isLab ? `<span class="lab-tag"><i class="fa-solid fa-flask"></i> Lab</span>` : ''}
               ${p.isActivity ? `<span class="lab-tag" style="background: rgba(234, 179, 8, 0.2); color: #fef08a; border-color: rgba(234, 179, 8, 0.4);"><i class="fa-solid fa-flag"></i> Activity</span>` : ''}
             </span>
             <div class="period-subinfo">
